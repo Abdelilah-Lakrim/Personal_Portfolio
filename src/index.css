@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cursor-color: rgba(14, 165, 233, 0.7);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gray-50 text-dark-800 font-sans overflow-x-hidden;
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--cursor-color);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out, width 0.2s ease-out, height 0.2s ease-out;
+}
+
+.custom-cursor.hover {
+  width: 50px;
+  height: 50px;
+  opacity: 0.5;
+}
+
+.hidden-cursor {
+  cursor: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-600;
+}
+
+/* Section styles */
+.section-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-8 text-dark-800 relative;
+}
+
+.section-title::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-24 h-1 bg-primary-500 mt-2 rounded-full;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-6 py-3 bg-primary-500 text-white font-medium rounded-md shadow-md hover:bg-primary-600 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-50;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-transparent border-2 border-primary-500 text-primary-500 font-medium rounded-md shadow-md hover:bg-primary-50 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-50;
+}
+
+/* 3D card effect */
+.tilt-card {
+  @apply relative overflow-hidden rounded-xl shadow-smooth bg-white p-6 transition-all duration-300 hover:shadow-neon;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+.skill-bar {
+  @apply h-2 rounded-full bg-gray-200 overflow-hidden mt-2;
+}
+
+.skill-progress {
+  @apply h-full bg-primary-500 rounded-full;
+  transition: width 1.5s ease-in-out;
+}
+
+/* Animation classes */
+.animate-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Project card styles */
+.project-card {
+  @apply relative overflow-hidden rounded-xl shadow-smooth transition-all duration-300;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+.project-card img {
+  @apply transition-all duration-500;
+}
+
+.project-card:hover img {
+  @apply scale-105;
+}
+
+.project-card-content {
+  @apply absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-dark-900/80 to-transparent text-white opacity-0 transition-all duration-300;
+}
+
+.project-card:hover .project-card-content {
+  @apply opacity-100;
+}
+
+/* Timeline styles */
+.timeline-container {
+  @apply relative;
+}
+
+.timeline-container::before {
+  content: '';
+  @apply absolute left-0 md:left-1/2 h-full w-0.5 bg-primary-200 transform md:-translate-x-1/2;
+}
+
+.timeline-item {
+  @apply relative pt-10 pb-10;
+}
+
+.timeline-dot {
+  @apply absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-primary-500 border-4 border-white shadow-md transform md:-translate-x-1/2 z-10;
+}
+
+.timeline-content {
+  @apply ml-6 md:ml-0 md:w-5/12 p-6 bg-white rounded-xl shadow-smooth transition-all duration-300 hover:shadow-neon;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  @apply md:ml-auto md:mr-0;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  @apply md:mr-auto md:ml-0;
+}
